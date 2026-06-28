@@ -293,9 +293,11 @@ async function mug(){
             log("Ambushing the backstreets. ("+i+"s)")
             await sleep(1000)
         };
-        if (rng_Rounded(0,3)!=3){
+        if ((rng_Rounded(0,5)+(strength/5))>4){
             money = money + rng_Rounded(9,30);
             energy = energy - energyLoss
+            rep = rep + rng_Rounded(0,1)
+            strength = strength + rng_Rounded(0,1)
             log("You successfully mugged someone.");
             busy = false
             return
@@ -303,6 +305,8 @@ async function mug(){
             let moneyloss = rng_Rounded(9,30)
             if (money>moneyloss){
             money = money - moneyloss
+            rep = rep - rng_Rounded(0,1)
+            strength = strength + rng_Rounded(-1,1)
             }
             energy = energy - energyLoss
             log("Your attempt failed, but you managed to get away.");
