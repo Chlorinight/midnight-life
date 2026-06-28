@@ -258,8 +258,8 @@ async function pickpocket(){
             log("Making small talks. ("+1+"s)")
             await sleep(1000)
         };
-        if (rng_Rounded(0,2)==2){
-            money = money + rng_Rounded(4,20);
+        if (rng_Rounded(0,1)==1){
+            money = money + rng_Rounded(4,17);
             energy = energy - energyLoss
             log("You successfully pickpocketed someone.");
             busy = false
@@ -294,10 +294,12 @@ async function mug(){
             await sleep(1000)
         };
         if ((rng_Rounded(0,5)+(strength/5))>4){
-            money = money + rng_Rounded(9,30);
-            energy = energy - energyLoss
-            rep = rep + rng_Rounded(0,1)
+            money = money + rng_Rounded(9,50);
+            energy = energy - energyLoss;
+            rep = rep + rng_Rounded(0,1);
+            if (strength<21){
             strength = strength + rng_Rounded(0,1)
+            };
             log("You successfully mugged someone.");
             busy = false
             return
@@ -306,7 +308,6 @@ async function mug(){
             if (money>moneyloss){
             money = money - moneyloss
             rep = rep - rng_Rounded(0,1)
-            strength = strength + rng_Rounded(-1,1)
             }
             energy = energy - energyLoss
             log("Your attempt failed, but you managed to get away.");
@@ -465,7 +466,8 @@ function load() {
 function refresh(){
 
 // debug
-    money = Math.pow(10,9)
+//    money = Math.pow(10,9)
+//    energy = Math.pow(10,9)
     setLocation(stage)
     nameSpan.innerText=playername
 
