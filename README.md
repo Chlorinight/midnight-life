@@ -1,0 +1,1 @@
+some functions were derived from https://github.com/Alex313031/universal-paperclips-electron , which is licensed under the GNU General Public License v3.0

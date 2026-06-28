@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="styles.css">
+    <head>
+        <title id="loctit">Midnight City Outskirts</title>
+        <noscript>Your browser does not support JavaScript!</noscript>
+
+    </head>
+    <body>
+        <div id="overlay"></div>
+        <div>
+            <br>
+            <img src="placeholderBanner.png">
+            <br>
+            <br>
+            A life in
+            <b>
+            <div class="location" id="bigSign" style="font-size: 2.25em;">
+                Midnight City Outskirts
+            </div>
+            </b>
+        </div>
+        <br>
+    <div id="flavortext">It's as boring as ever.</div>
+    <hr>
+    <div id="log">You've woken up from a terrible sleep, as usual.</div>
+    <hr>
+    <button class="saveButton" onclick="save()">Save Game</button>
+    <button class="saveButton" onclick="reset()">Reset Game</button>
+    <span style="font-size: 0.6em;">Thank you for playing this game! Interface largely inspired by Universal Paperclips.</span>
+    <br>
+    <br>
+    <div id="leftColumn">
+        <div id="basic_stats">
+            <b>Profile</b>
+            <hr>
+            Name:
+            <span id="name">Rules Stickler</span>
+            <br>
+            <hr>
+            Money:
+            <span id="cash">0</span> B$
+            <br>
+            Reputation: 
+            <span id="reputation">0</span>
+            <br>
+            Energy:
+            <span id="energy">100</span>
+            <br>
+            Strength:
+            <span id="strength">0</span>
+            <hr>
+        </div>
+        <br>
+    </div>
+    <div id ="centerColumn">
+        <div id="actions">
+            <b>Actions</b>
+            <hr>
+            <div id="scavDiv">
+                <button id="scav" class="button" onclick="scav();">SCAVENGE</button>
+                <br> 
+                Travelers come and go, occasionally dropping trinkets and coins. You don't feel rich, but it's better than begging.
+                <br>
+                <br>
+            </div>
+            <div>
+                <button id="naptime" class="button" onclick="naptime();">REST</button>
+                <br>
+                Only idiots become too exhausted to rob a bank. Even you know sleeping is good.
+                <br>
+                <br>
+            </div>
+            <div style="display:none;" id="giveawayDiv">
+                <button id="giveaway" class="button" onclick="giveaway();">DONATE</button>
+                <br>
+                To no one's surprise, everyone likes money. People like it if you give them some.
+                <br>
+                <br>
+            </div>
+            <div style="display:none;" id="pickpocketDiv">
+                <button id="pickpocket" class="button" onclick="pickpocket();">PICKPOCKET</button>
+                <br>
+                Your charisma can be a great distraction for these losers.
+                <br>
+                <br>
+            </div>
+            <div style="display:none;" id="mugDiv">
+                <button id="mug" class="button" onclick="mug();">MUG</button>
+                <br>
+                Intimidation works wonders for robbing people blind.
+                <br>
+                <br>
+            </div>
+
+        </div>
+        <div id="upgrades">
+            <b>Accruements</b>
+            <hr>
+            <div id="upgList">
+                
+            </div>
+        </div>
+        <br>
+    </div>
+    <div id ="rightColumn">
+        <b>Die</b>
+        <hr>
+        <button class="button" onclick="die()">Die</button>
+        <br>
+        Fucking dies
+        <br>
+        There is 0 reason to push this button
+        <br>
+        this feature is so fucking useless
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat bibendum vulputate. Cras ac tristique enim.
+        <br>
+        *in tom scott voice*
+        <br>
+        I am at the
+        <span class="location">Midnight City Outskirts</span>
+    </div>
+    </body>
+    <script src="variables.js"></script>
+    <script src="accrue.js"></script>
+    <script src="game.js"></script>
+</html>
