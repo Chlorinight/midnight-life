@@ -478,7 +478,7 @@ function refresh(){
 
     // debug
     
-    money = Math.pow(20,11)
+//    money = Math.pow(20,11)
 //    energy = Math.pow(10,9)
 
     // reset texts

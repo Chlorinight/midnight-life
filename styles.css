@@ -5,6 +5,15 @@ body {
    margin: auto;
 }
 
+footer {
+   position: fixed; 
+   width: 100%; 
+   bottom: 0; 
+   left: 0; 
+   border: 1px solid #f1f1f1;
+   background: #000000;
+}
+
 .hidden {
   display: none;
 }
@@ -29,11 +38,13 @@ body {
    box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    text-shadow: #cccccc 0 0px 0;
    color: #ffffff;
-   font-size: 9px;
+   font-size: 10px;
    font-family: helvetica, serif;
    text-decoration: none;
    vertical-align: middle;
    outline: none;
+
+   margin-bottom: 1px;
    }
 
 .saveButton:hover {
@@ -176,6 +187,29 @@ body {
     color: #cccccc;
     font-weight: bold;
     text-shadow: #525252 1px 1px 0;
+}
+
+.tooltiptxt {
+  visibility: hidden;
+  z-index: 1;
+  position: absolute;
+  border: 2px solid gray ;
+  background: #0f0f0f;
+  color: #ffffff;
+  width: 275px;
+  margin-right: 120%;
+  padding: 10px;
+  text-align: center;
+  right: 0px;
+}
+
+.tooltip {
+   position: relative;
+}
+
+
+.tooltip:hover .tooltiptxt {
+  visibility: visible;
 }
 
 #flavortext {

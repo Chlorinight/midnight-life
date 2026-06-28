@@ -4,10 +4,9 @@
     <head>
         <title id="loctit">Midnight City Outskirts</title>
         <noscript>Your browser does not support JavaScript!</noscript>
-
     </head>
     <body>
-        <div id="overlay"></div>
+    <main>
         <div>
             <br>
             <img src="placeholderBanner.png">
@@ -28,10 +27,6 @@
     <div id="log2div" class="log" style="opacity:75%;">.</div>
     <div id="log1div" class="log">A new day, as usual.</div>
     <hr>
-    <button class="saveButton" onclick="save()">Save Game</button>
-    <button class="saveButton" onclick="reset()">Reset Game</button>
-    <span style="font-size: 0.6em;">Thank you for playing this game! Interface largely inspired by Universal Paperclips.</span>
-    <br>
     <br>
     <div id="leftColumn">
         <div id="basic_stats">
@@ -52,6 +47,7 @@
             <br>
             Strength:
             <span id="strength">0</span>
+            
             <hr>
         </div>
         <br>
@@ -106,7 +102,7 @@
         </div>
         <br>
     </div>
-    <div id ="rightColumn">
+    <div id ="rightColumn" style="display:none;">
         <b>Die</b>
         <hr>
         <button class="button" onclick="die()">Die</button>
@@ -124,6 +120,12 @@
         I am at the
         <span class="location">Midnight City Outskirts</span>
     </div>
+    </main>
+    <footer>
+        <button class="saveButton" onclick="save()" style="margin-left:4px;">Save Game</button>
+        <button class="saveButton" onclick="reset()">Reset Game</button>
+        <span style="font-size: 0.8em;">Thank you for playing this game! Interface largely inspired by Universal Paperclips. Tested  and assisted by umlammerjammers.</span>
+    </footer>
     </body>
     <script src="variables.js"></script>
     <script src="accrue.js"></script>
