@@ -184,7 +184,7 @@ body {
    font-weight: bold;
 }
 
-#log {
+.log {
    text-align:center;
    font-size: 1em;
 }

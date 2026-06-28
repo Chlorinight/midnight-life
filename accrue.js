@@ -13,7 +13,7 @@ var upgrade1 = {
     element: null,
     effect: function(){
         upgrade1.flag = 1;
-        log("You should be able to find more junks now.");
+        log("I should be able to find more junks now.");
         money = money - 12;
         scavmax = scavmax + 1;
         upgrade1.element.parentNode.removeChild(upgrade1.element);
@@ -36,7 +36,7 @@ var upgrade2 = {
     element: null,
     effect: function(){
         upgrade2.flag = 1;
-        log("Bang. At least that's what you hope it does.");
+        log("Bang. At least that's what I hope it does.");
         money = money - 100;
         hasGun = true;
         upgrade2.element.parentNode.removeChild(upgrade2.element);
@@ -59,7 +59,7 @@ var upgrade3 = {
     element: null,
     effect: function(){
         upgrade3.flag = 1;
-        log("Crimes here are rampant. Sounds like your favorite kind of hell.");
+        log("Crimes here are rampant. Sounds like my favorite kind of hell.");
         money = money - 30;
         stage = 1
         setLocation(stage)
@@ -71,3 +71,26 @@ var upgrade3 = {
 
 
 upgrades.push(upgrade3);
+
+var upgrade4 = {
+    id: "projectButton4",
+    title: "idk ",
+    priceTag: "(5105235 B$)",
+    description: "Why?",
+    trigger: function(){return money>=1},
+    uses: 1,
+    cost: function(){return money>=5105235},
+    flag: 0,
+    element: null,
+    effect: function(){
+        money = money - 5105235
+        upgrade4.flag = 1;
+        log("Placeholder.")
+        upgrade4.element.parentNode.removeChild(upgrade4.element);
+        var index = activeUpgrades.indexOf(upgrade4);
+        activeUpgrades.splice(index, 1);
+    }
+}
+
+
+upgrades.push(upgrade4);

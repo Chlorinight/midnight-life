@@ -20,6 +20,14 @@ const flavortext = [
 const locationColors = ["#cccccc","#c91be0","#e22200","#f5bb1d","#2ed73a" ]
 const locationColorsShadow = ["#525252","#7d0e8b","#791200","#a85507","#2ea136" ]
 
+const locationMult = [
+    1,
+    1,
+    3,
+    5,
+    10
+]
+
 const nameFirst = [
 "Witty",
 "Sulky",
@@ -93,6 +101,85 @@ const nameLast = [
     "Droog",
     "Mechanist",
     "Renegade"
+]
+
+const logsLists = [
+    [ // exhaustion 0
+        "Way too tired to do anything.",
+        "So tired I'd rather sleep on rocks.",
+        "Just don't feel like it right now.",
+        "Resting would be nice.",
+        "I should take a breather.",
+        "I'm feeling real exhausted."
+    ],
+    [ // scav 1
+        "Found some coins under a rock.",
+        "Found some coins between the cracks.",
+        "Found some coins just on the ground."
+    ],
+    [ // scavprogress 2
+        "Walking around... ",
+        "Looking like an idiot... ",
+        "Finding rocks... "
+    ],
+    [ // pickpocket progress 3
+        "Making small talks... ",
+        "Being sneaky... ",
+        "Picking Pockets... "
+    ],
+    [ // pickpocket succeed 4
+        "Successfully picked some pockets.",
+        "Ppickpocketed someone."
+    ],
+    [ // pickpocket fail 5
+        "Caught pickpocketing, what a shame.",
+        "Couldn't find a window to pickpocket anyone."
+    ],
+    [ // mugging progress 6
+        "Mugging...",
+        "Ambushing the backstreets... ",
+        "Finding unlucky victims... "
+    ],
+    [ // mugging succeed 7
+        "Mugged someone.",
+        "They deserved it anyways.",
+        "Got some money.",
+        "I hope I'm intimidating."
+    ],
+    [ // mugging fail 8
+        "Hard to mug an armed person.",
+        "Wasn't intimidating enough.",
+        "Failed.",
+        "Mugged me back."
+    ],
+    [ // donate progress 9
+        "Looking for some 'Friends'... ",
+        "Offering some cash... "
+    ],
+    [ // donate succeed 10
+        "They happily accepted my offers.",
+        "The money was appreciated.",
+        "Helped someone, I guess."
+    ],
+    [ // donate fail 11
+        "Wasn't enough money to impress anyone.",
+        "Laughed at me.",
+        "I need more money."
+    ],
+    [ // nap progress 12
+        "Taking a nap... ",
+        "Sheltering... ",
+        "Enjoying my time... ",
+        "Sleeping... ",
+        "Laying on my ass... "
+    ],
+    [ // wakeup 13
+        "Just woke up from a shitty nap, as usual.",
+        "Feeling energized again.",
+        "I don't feel like shit anymore.",
+        "Got something better to do, actually.",
+        "I can walk without collapsing again."
+    ]
 ]
 
 //misc

@@ -9,7 +9,7 @@ function cacheDOMElements(){
     leftColumn = document.getElementById("leftColumn");
     centerColumn = document.getElementById("centerColumn");
     rightColumn = document.getElementById("rightColumn");
-    actionLog = document.getElementById("log");
+    actionLog = document.getElementById("log1div");
     reputationElement = document.getElementById("reputation");
     cashElement = document.getElementById("cash");
     energyElement = document.getElementById("energy");
@@ -67,7 +67,16 @@ function blink(element){
 
 // log
 
-function log(text){actionLog.innerText=text}
+function log(text){
+    document.getElementById("log4div").innerText=document.getElementById("log3div").innerText;
+    document.getElementById("log3div").innerText=document.getElementById("log2div").innerText;
+    document.getElementById("log2div").innerText=document.getElementById("log1div").innerText;
+    actionLog.innerText=text;
+};
+
+function returnRandomInLogArray(index){
+    return logsLists[index][rng_Rounded(0,logsLists[index].length-1)];
+}
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -205,12 +214,12 @@ async function naptime(){
     busy = true
     hideBd()
     for (i=restTime; i>0; i--){
-        log("Nap time. ("+i+"s)")
+        log(returnRandomInLogArray(12) +"("+i+"s)")
         await sleep(1000)
     };
     showBd()
     energy = energyMax
-    log("You've woken up from a terrible sleep, as usual.");
+    log(returnRandomInLogArray(13));
     busy = false    
     }
 }
@@ -220,23 +229,23 @@ async function scav(){
     busy = true
     energyLoss = rng_Rounded(7,15);
     if (energyLoss > energy+1 && energy > 10){
-    log("You are too tired to take a jog.");
+    log(returnRandomInLogArray(0));
     energy = rng_Rounded(1,9)
     busy = false
     return
     }
     if (energy>10 && energyLoss < energy){
     for (i=1; i>0; i--){
-        log("Walking around. ("+500+"ms)")
+        log(returnRandomInLogArray(2) + "("+500+"ms)")
         await sleep(500)
     };
     money = money + rng_Rounded(0,scavmax);
     energy = energy - energyLoss
-    log("You looked around the streets for a few coins.");
+    log(returnRandomInLogArray(1));
     busy = false
     return
     } else {
-    log("You are too tired to take a jog.");
+    log(returnRandomInLogArray(0));
     busy = false
     return
     }
@@ -248,30 +257,30 @@ async function pickpocket(){
     busy = true
     energyLoss = rng_Rounded(16,36);
     if (energyLoss > energy+1 && energy > 10){
-    log("You are too sleepy to make a move.");
+    log(returnRandomInLogArray(0));
     energy = rng_Rounded(1,9)
     busy = false
     return
     }
     if (energy>10 && energyLoss < energy){
         for (i=1; i>0; i--){
-            log("Making small talks. ("+1+"s)")
+            log(returnRandomInLogArray(3)+"("+1+"s)")
             await sleep(1000)
         };
         if (rng_Rounded(0,1)==1){
             money = money + rng_Rounded(4,17);
             energy = energy - energyLoss
-            log("You successfully pickpocketed someone.");
+            log(returnRandomInLogArray(4));
             busy = false
             return
         } else {
             energy = energy - energyLoss
-            log("You failed to pickpocket anyone.");
+            log(returnRandomInLogArray(5));
             busy = false
             return
         };
     } else {
-    log("You are too sleepy to make a move.");
+    log(returnRandomInLogArray(0));
     busy = false
     return
     }
@@ -283,14 +292,14 @@ async function mug(){
     busy = true
     energyLoss = rng_Rounded(16,36);
     if (energyLoss > energy+1 && energy > 10){
-    log("You don't think using weapons while exhausted is a good idea.");
+    log(returnRandomInLogArray(0));
     energy = rng_Rounded(1,9)
     busy = false
     return
     }
     if (energy>10 && energyLoss < energy){
         for (i=2; i>0; i--){
-            log("Ambushing the backstreets. ("+i+"s)")
+            log(returnRandomInLogArray(6)+ "("+i+"s)")
             await sleep(1000)
         };
         if ((rng_Rounded(0,5)+(strength/5))>4){
@@ -300,22 +309,24 @@ async function mug(){
             if (strength<21){
             strength = strength + rng_Rounded(0,1)
             };
-            log("You successfully mugged someone.");
+            log(returnRandomInLogArray(7));
             busy = false
             return
         } else {
             let moneyloss = rng_Rounded(9,30)
             if (money>moneyloss){
             money = money - moneyloss
-            rep = rep - rng_Rounded(0,1)
+            function mugRNG(){if(rng_Rounded(0,3)==3){return 1 }else{return 0};}
+            rep = rep - mugRNG()
+            strength = strength + mugRNG()
             }
             energy = energy - energyLoss
-            log("Your attempt failed, but you managed to get away.");
+            log(returnRandomInLogArray(8));
             busy = false
             return
         };
     } else {
-    log("You don't think using weapons while exhausted is a good idea.");
+    log(returnRandomInLogArray(0));
     busy = false
     return
     }
@@ -327,17 +338,17 @@ async function giveaway(){
     busy = true
     loss = rng_Rounded(5,30);
     for (i=2; i>0; i--){
-        log("Searching for 'friends'. ("+i+"s)")
+        log(returnRandomInLogArray(9)+"("+i+"s)")
         await sleep(1000)
     };
     if (energy>0 && loss < money){
-    log("Your gifts were appreciated by some people.");
+    log(returnRandomInLogArray(10));
     rep = rep + rng_Rounded(1,2)
     money = money - loss
     busy = false
     return
     } else {
-    log("You didn't have enough money to impress anyone.");
+    log(returnRandomInLogArray(11));
     busy = false
     return
     }
@@ -374,7 +385,7 @@ window.setInterval(function(){
     if (saveTimer >= 250) {
         save();
         saveTimer = 0;
-    }
+    };
 }, 100);
 
 
@@ -465,9 +476,13 @@ function load() {
 
 function refresh(){
 
-// debug
-//    money = Math.pow(10,9)
+    // debug
+    
+    money = Math.pow(20,11)
 //    energy = Math.pow(10,9)
+
+    // reset texts
+
     setLocation(stage)
     nameSpan.innerText=playername
 
@@ -500,3 +515,20 @@ document.addEventListener('keydown', (event) => {
     };
     };
 });
+
+/*
+var testarray = [];
+
+for (i=0;i<=100;i++){
+    let testval=rng_Rounded(0,500)
+    if (testarray.includes(testval)){
+        console.log("found repeat ("+testval+")")
+    } else {
+        console.log(testval)
+        testarray.push(testval)
+    };
+}
+
+ran an experiment on function randomness
+
+*/
