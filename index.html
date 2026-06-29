@@ -32,22 +32,69 @@
         <div id="basic_stats">
             <b>Profile</b>
             <hr>
-            Name:
+           <span class="tooltip" id="tipname">
+             Name:
+             <span class="tooltiptxt"> 
+                <b>Your name</b>
+                <br><br>
+                You picked this one yourself.
+             </span>
+           </span>
+
             <span id="name"></span>
             <br>
             <hr>
-            Money:
+
+            <span class="tooltip" id="tipmoney">
+             Money:
+             <span class="tooltiptxt"> 
+                <b>Money</b>
+                <br><br>
+                Makes the planet go 'round.
+                You earn money by working for it, whether that be through 'legitimate' means or petty thievery. 
+             </span>
+           </span>
+            
             <span id="cash">0</span> B$
             <br>
+
+           <span class="tooltip" id="tipreputation">
             Reputation: 
+             <span class="tooltiptxt"> 
+                <b>Reputation</b>
+                <br><br>
+                How much you are respected around here.
+                You gain reputation by doing good deeds, and lose it by floundering at being a criminal.
+             </span>
+           </span>
+
             <span id="reputation">0</span>
             <br>
+
+           <span class="tooltip" id="tipenergy">
             Energy:
+             <span class="tooltiptxt"> 
+                <b>Energy</b>
+                <br><br>
+                This city never sleeps, but that doesn't mean you shouldn't.
+                Your energy goes down as you perform actions, and at some point you will become too tired to do anything until you take a break.  
+             </span>
+           </span>
+
             <span id="energy">100</span>
             <br>
+
+            <span class="tooltip" id="tipstrength">
             Strength:
+             <span class="tooltiptxt"> 
+                <b>Strength</b>
+                <br><br>
+                Strength is everything when it comes to winning a fight.
+                Your strength will increase when you succeed at a tough task, increasing the chance of success as you become more skillful.   
+             </span>
+            </span>
+
             <span id="strength">0</span>
-            
             <hr>
         </div>
         <br>
@@ -122,10 +169,19 @@
     </div>
     </main>
     <footer>
-        <button class="saveButton" onclick="save()" style="margin-left:4px;">Save Game</button>
-        <button class="saveButton" onclick="reset()">Reset Game</button>
-        <span style="font-size: 0.8em;">Thank you for playing this game! Interface largely inspired by Universal Paperclips. Tested  and assisted by umlammerjammers.</span>
+        <button class="resetButton" onclick="reset() "style="margin-left:4px;">Reset Game</button>
+        <button class="saveButton" onclick="save()">Save Game</button>
+        <button class="saveButton" onclick="openImport()">Import Save</button>
+        <button class="saveButton" onclick="exportSave()">Export Save</button>
+        <button class="saveButton" onclick="creditToggle()">Full Credits</button>
+        <span style="font-size: 0.8em;">Thank you for playing this game! Interface largely inspired by Universal Paperclips. </span>
     </footer>
+    <div id="importPopup" style="display: none">
+        Input your save code here.
+        <br>
+        <textarea type="text" class="inputForm" id="inputSaveCode" placeholder="Input Code"></textarea>
+        <button class="button" onclick="importSave()">IMPORT</button>
+    </div>
     </body>
     <script src="variables.js"></script>
     <script src="accrue.js"></script>

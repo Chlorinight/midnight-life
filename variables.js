@@ -68,7 +68,12 @@ const nameFirst = [
 "Bureaucratic",
 "Pissy",
 "Moonstruck",
-"Lunatic"
+"Lunatic",
+"Churlish",
+"Cockamamie",
+"Jocular",
+"Litigious",
+"Whimsical"
 ];
 
 const nameLast = [
@@ -100,7 +105,10 @@ const nameLast = [
     "Phil",
     "Droog",
     "Mechanist",
-    "Renegade"
+    "Renegade",
+    "Scofflaw",
+    "Thaumaturge",
+    "Neophyte"
 ]
 
 const logsLists = [

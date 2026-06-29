@@ -496,6 +496,72 @@ function reset() {
     location.reload()
 }
 
+function exportSave() {
+
+    save()
+
+    var loadGame = JSON.parse(localStorage.getItem("saveGame"));
+    var loadUpgradesUses = JSON.parse(localStorage.getItem("saveUpgradesUses"));
+    var loadUpgradesFlags = JSON.parse(localStorage.getItem("saveUpgradesFlags"));
+    var loadUpgradesActive = JSON.parse(localStorage.getItem("saveUpgradesActive"));
+
+    const mergedSaveVariables = {
+        loadGame,
+        loadUpgradesUses,
+        loadUpgradesFlags,
+        loadUpgradesActive
+    }
+
+    var mergedSaveVariablesString = JSON.stringify(mergedSaveVariables, null, 2);
+    var binaryExportString = String.fromCodePoint(...new TextEncoder().encode(mergedSaveVariablesString));
+    var base64ExportString = btoa(binaryExportString)
+
+    console.log(base64ExportString)
+
+}
+
+var importOpen = false;
+
+function openImport() {
+
+var impPopup = document.getElementById("importPopup");
+
+if (importOpen==false){
+    impPopup.style.display="flex";
+    importOpen = true
+} else {
+    impPopup.style.display="none";
+    importOpen = false
+}
+
+};
+
+function importSave() {
+
+    var base64ImportString = document.getElementById("inputSaveCode").value
+
+    try {
+    var binaryImportString = atob(base64ImportString)
+    var decodedJSONImportString = new TextDecoder().decode(Uint8Array.from(binaryImportString, c => c.codePointAt(0)));
+    var mergedSaveImportVariables = JSON.parse(decodedJSONImportString);
+
+    console.log(mergedSaveImportVariables)
+    } catch (error) {
+        alert("Failed to import: "+ error.message + " (Did you check if it was a valid code?)");
+    }
+
+
+    localStorage.setItem("saveGame",JSON.stringify(mergedSaveImportVariables.loadGame));
+    localStorage.setItem("saveUpgradesUses",JSON.stringify(mergedSaveImportVariables.loadUpgradesUses));
+    localStorage.setItem("saveUpgradesFlags",JSON.stringify(mergedSaveImportVariables.loadUpgradesFlags));
+    localStorage.setItem("saveUpgradesActive",JSON.stringify(mergedSaveImportVariables.loadUpgradesActive));
+
+    location.reload()
+
+};
+
+
+
 // easter egg
 
 document.addEventListener('keydown', (event) => {
