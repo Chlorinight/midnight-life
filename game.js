@@ -20,6 +20,7 @@ function cacheDOMElements(){
     scavDiv = document.getElementById("scavDiv")
     nameSpan = document.getElementById("name")
     mugDiv = document.getElementById("mugDiv")
+    errorMessage = document.getElementById("errorMessage")
 };
 
 var leftColumn
@@ -36,6 +37,7 @@ var giveawayDiv;
 var scavDiv;
 var nameSpan;
 var mugDiv;
+var errorMessage;
 
 cacheDOMElements();
 
@@ -378,6 +380,7 @@ window.setInterval(function(){
 
 // Slow Loop
 
+var errorTimer = 0;
 var saveTimer = 0;
 
 window.setInterval(function(){
@@ -386,6 +389,20 @@ window.setInterval(function(){
         save();
         saveTimer = 0;
     };
+
+    if (window.getComputedStyle(errorMessage).getPropertyValue('display')=="flex"){
+        if (window.getComputedStyle(errorMessage).getPropertyValue('opacity')>0 && errorTimer>50){
+        errorMessage.style.opacity=(window.getComputedStyle(errorMessage).getPropertyValue('opacity')-0.1)
+    } else {
+        errorTimer++
+    }
+        if (window.getComputedStyle(errorMessage).getPropertyValue('opacity')<=0){
+            errorMessage.style.display="none";
+            errorMessage.style.opacity="1";
+            errorTimer = 0;
+            errorMessage.style.color="#FF0000"
+        }
+    }
 }, 100);
 
 
@@ -498,8 +515,6 @@ function reset() {
 
 function exportSave() {
 
-    save()
-
     var loadGame = JSON.parse(localStorage.getItem("saveGame"));
     var loadUpgradesUses = JSON.parse(localStorage.getItem("saveUpgradesUses"));
     var loadUpgradesFlags = JSON.parse(localStorage.getItem("saveUpgradesFlags"));
@@ -516,15 +531,21 @@ function exportSave() {
     var binaryExportString = String.fromCodePoint(...new TextEncoder().encode(mergedSaveVariablesString));
     var base64ExportString = btoa(binaryExportString)
 
+    navigator.clipboard.writeText(base64ExportString)
+
+    errorMessage.style.display="flex";
+    errorMessage.style.color="#00FF00";
+    errorMessage.innerText=("Copied to clipboard.");
+
+
     console.log(base64ExportString)
 
 }
 
 var importOpen = false;
+var impPopup = document.getElementById("importPopup");
 
 function openImport() {
-
-var impPopup = document.getElementById("importPopup");
 
 if (importOpen==false){
     impPopup.style.display="flex";
@@ -545,12 +566,6 @@ function importSave() {
     var decodedJSONImportString = new TextDecoder().decode(Uint8Array.from(binaryImportString, c => c.codePointAt(0)));
     var mergedSaveImportVariables = JSON.parse(decodedJSONImportString);
 
-    console.log(mergedSaveImportVariables)
-    } catch (error) {
-        alert("Failed to import: "+ error.message + " (Did you check if it was a valid code?)");
-    }
-
-
     localStorage.setItem("saveGame",JSON.stringify(mergedSaveImportVariables.loadGame));
     localStorage.setItem("saveUpgradesUses",JSON.stringify(mergedSaveImportVariables.loadUpgradesUses));
     localStorage.setItem("saveUpgradesFlags",JSON.stringify(mergedSaveImportVariables.loadUpgradesFlags));
@@ -558,6 +573,13 @@ function importSave() {
 
     location.reload()
 
+    } catch (error) {
+        errorMessage.style.display="flex"
+        errorMessage.style.color="#FF0000";
+        errorMessage.innerText=("Failed to import: "+ error.message + " (Did you check if it was a valid code?)");
+        impPopup.style.display="none";
+        importOpen = false
+    }
 };
 
 
@@ -598,3 +620,18 @@ for (i=0;i<=100;i++){
 ran an experiment on function randomness
 
 */
+
+// BORING STUFF
+
+var creditOpen = false;
+
+function creditToggle(){
+    let popup = document.getElementById("creditPOP")
+    if (creditOpen){
+        popup.style.display="none"
+        creditOpen = false
+    } else {
+        popup.style.display="inline-block"
+        creditOpen = true
+    }
+}
