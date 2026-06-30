@@ -338,15 +338,15 @@ async function mug(){
 async function giveaway(){
     if (busy == false){
     busy = true
-    loss = rng_Rounded(5,30);
+    loss = ((0.1*money));
     for (i=2; i>0; i--){
         log(returnRandomInLogArray(9)+"("+i+"s)")
-        await sleep(1000)
+        await sleep(5)
     };
-    if (energy>0 && loss < money){
+    if (loss < money && loss > 4){
     log(returnRandomInLogArray(10));
-    rep = rep + rng_Rounded(1,2)
-    money = money - loss
+    rep = Math.round(rep+(Math.log(loss/2)))
+    money = Math.round(money - loss)
     busy = false
     return
     } else {
