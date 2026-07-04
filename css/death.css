@@ -1,0 +1,162 @@
+body {
+    background-color:#000000;
+    image-rendering: pixelated;
+    overflow: hidden;
+}
+
+#space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    perspective: 600px;
+}
+
+#room, #roomanimator{
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+
+}
+
+#roomanimator {
+    transform: rotateX(0deg) translateZ(500px) translateY(-50px)
+}
+
+.panningOut {
+  animation: panOut 2s ease-in-out forwards;
+}
+
+.panningBack {
+  animation: panBack 2s ease-in-out;
+}
+
+@keyframes panOut {
+  from {
+    transform: rotateX(0deg) translateZ(500px) translateY(-50px);
+  }
+  to {
+    transform: rotateX(-90deg) translateZ(350px) translateY(-200px);
+  }
+}
+
+@keyframes panBack {
+  from {
+    transform: rotateX(-90deg) translateZ(350px) translateY(-200px);
+  }
+  to {
+    transform: rotateX(0deg) translateZ(500px) translateY(-50px);
+  }
+}
+
+#room .wall {
+    width: 100vh;
+    height: 100vh;
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    
+}
+
+.backwall {
+    background: url('../images/concretetilesroughDoorway.png');
+    transform: translateZ(-100vh);
+}
+
+.ceiling {
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+}
+
+.floor {
+    background: url('../images/concretetilesroughObscured.png');
+    transform-origin: bottom center;
+    transform: rotateX(90deg);
+}
+
+#room .leftwall, #room .rightwall {
+    background: url('../images/concretetilesrough.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.leftwall {
+    transform: rotateY(90deg);
+    transform-origin: left;
+}
+
+.rightwall {
+    transform: rotateY(-90deg);
+    transform-origin: right center;
+}
+
+.table {
+    background: url('../images/tabletop.png');
+    transform-origin: top center;
+    background-size:contain;
+    transform: rotateX(90deg) translateZ(-450px) translateY(-620px);
+}
+
+.gunfloor {
+    background: url('../images/revolver.png');
+    background-size:contain;
+    transform: rotateX(90deg) translateZ(-200px) translateY(-405px);
+}
+
+.gunToEnemy {
+  animation: gunGoToEnemy 1s ease-in-out forwards;
+}
+
+.gunToMe {
+  animation: gunGoToMe 1s ease-in-out forwards;
+}
+
+.hidden {
+    display:none;
+}
+
+@keyframes gunGoToEnemy {
+  from {
+    transform: rotateX(90deg) translateZ(-200px) translateY(-155px) rotateZ(-90deg);
+  }
+  to {
+    transform: rotateX(90deg) translateZ(-200px) translateY(-645px) rotateZ(560deg);
+  }
+}
+
+@keyframes gunGoToMe {
+  from {
+    transform: rotateX(90deg) translateZ(-200px) translateY(-645px) rotateZ(90deg);
+  }
+  to {
+    transform: rotateX(90deg) translateZ(-200px) translateY(-155px) rotateZ(-560deg);
+  }
+}
+
+.tablepole {
+    width: 35vh;
+    transform-origin: top center;
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-image: url('../images/tablestand.png');
+    background-position: bottom;
+    position:absolute;
+    transform: translateZ(-400px) translateY(350px);
+    height: 35vh;
+}
+
+#YOU {
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+}
