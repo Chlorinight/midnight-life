@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- EMBED STUFF -->
+    <meta property="og:title" content="A Life in Midnight City">
+    <meta property="og:description" content="A new day, as usual.">
+    <meta property="og:image" content="assets\feltTownBanner.png">
+    <meta property="og:url" content="https://midnight-life.neocities.org">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css\styles.css">
+    <link rel="icon" type="image/x-icon" href="images\favicon.ico">
     <head>
         <title id="loctit">Midnight City Outskirts</title>
         <noscript>Your browser does not support JavaScript!</noscript>
@@ -10,7 +18,7 @@
     <main>
         <div>
             <br>
-            <img id="banner" src="assets\feltTownBanner.png">
+            <img id="banner" src="images\feltTownBanner.png">
             <br>
             <br>
             A life in
@@ -169,6 +177,7 @@
         <span class="location">Midnight City Outskirts</span>
     </div>
     </main>
+    <!-- FOOTER AND POPUPS -->
     <footer>
         <div id ="bottombuttons">
         <button class="resetButton" onclick="reset() "style="margin-left:4px;">Reset Game</button>
@@ -185,7 +194,7 @@
         <textarea type="text" class="inputForm" id="inputSaveCode" placeholder="Input Code"></textarea>
         <button class="button" onclick="importSave()">IMPORT</button>
     </div>
-    <div id="creditPOP" class="popup" style="width:400px; padding:5px; height:210px; display:none; box-shadow: 0px 0px 7px 1px #ffffff;">
+    <div id="creditPOP" class="popup" style="width:400px; padding:5px; height:210px; display:none;">
         <span style="font-size:1.2rem;font-weight:bold;">Credits</span>
         <hr>
         <span>@chlorinight - </span>
@@ -205,4 +214,5 @@
     <script src="js\variables.js"></script>
     <script src="js\accrue.js"></script>
     <script src="js\game.js"></script>
+    
 </html>
