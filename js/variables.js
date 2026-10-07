@@ -138,7 +138,7 @@ const logsLists = [
     ],
     [ // pickpocket succeed 4
         "Successfully picked some pockets.",
-        "Ppickpocketed someone."
+        "Pickpocketed someone."
     ],
     [ // pickpocket fail 5
         "Caught pickpocketing, what a shame.",
@@ -158,7 +158,7 @@ const logsLists = [
     [ // mugging fail 8
         "Hard to mug an armed person.",
         "Wasn't intimidating enough.",
-        "Failed.",
+        "Chickened out, I know.",
         "Mugged me back."
     ],
     [ // donate progress 9

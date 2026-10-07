@@ -3,12 +3,15 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 function panOut(){
 document.getElementById("roomanimator").classList.remove("panningBack")
 document.getElementById("roomanimator").classList.add("panningOut")
-document.getElementById("roomanimator").classList.add("shakeDiv")
 }
 
 function panIn(){
 document.getElementById("roomanimator").classList.remove("panningOut")
 document.getElementById("roomanimator").classList.add("panningBack")
+}
+
+function correction(){
+document.getElementById("roomanimator").classList.add("correction")
 }
 
 async function throwToEnemy(){

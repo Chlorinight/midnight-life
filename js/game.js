@@ -21,6 +21,8 @@ function cacheDOMElements(){
     nameSpan = document.getElementById("name")
     mugDiv = document.getElementById("mugDiv")
     errorMessage = document.getElementById("errorMessage")
+    upgradesDiv = document.getElementById("upgrades")
+    workDiv = document.getElementById("jobs")
 };
 
 var leftColumn
@@ -38,6 +40,8 @@ var scavDiv;
 var nameSpan;
 var mugDiv;
 var errorMessage;
+var upgradesDiv;
+var workDiv;
 
 cacheDOMElements();
 
@@ -143,9 +147,13 @@ function updateStats(){
 
 // SHOWS YOU STUFF YOU CAN DO
 
-function actionsReveal(){
+function revealThings(){
+    if (money>0){
+        upgradesDiv.style.display="block"
+    };
     if (stage>0){
         giveawayDiv.style.display="block";
+        workDiv.style.display="block";
     };
     if (rep>0){
         pickpocketDiv.style.display="block";
@@ -347,7 +355,7 @@ async function giveaway(){
     loss = ((0.1*money));
     for (i=2; i>0; i--){
         log(returnRandomInLogArray(9)+"("+i+"s)")
-        await sleep(5)
+        await sleep(1000)
     };
     if (loss < money && loss > 4){
     log(returnRandomInLogArray(10));
@@ -378,7 +386,7 @@ if (localStorage.getItem("saveGame") != null) {
 }
 
 window.setInterval(function(){
-    actionsReveal();
+    revealThings();
     updateStats();
     manageUpgrades();
 }, 10);
@@ -500,8 +508,8 @@ function refresh(){
 
     // debug
     
-//    money = Math.pow(20,11)
-//    energy = Math.pow(10,9)
+    money = Math.pow(20,11)
+    energy = Math.pow(10,9)
 
     // reset texts
 

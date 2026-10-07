@@ -22,7 +22,7 @@ body {
 }
 
 #roomanimator {
-    transform: rotateX(0deg) translateZ(500px) translateY(-50px)
+    transform: rotateX(0deg) translateZ(500px) translateY(-50px);
 }
 
 .panningOut {
@@ -34,19 +34,19 @@ body {
 }
 
 @keyframes panOut {
-  from {
+  0% {
     transform: rotateX(0deg) translateZ(500px) translateY(-50px);
   }
-  to {
+  100% {
     transform: rotateX(-90deg) translateZ(350px) translateY(-200px);
   }
 }
 
 @keyframes panBack {
-  from {
+  0% {
     transform: rotateX(-90deg) translateZ(350px) translateY(-200px);
   }
-  to {
+  100% {
     transform: rotateX(0deg) translateZ(500px) translateY(-50px);
   }
 }
